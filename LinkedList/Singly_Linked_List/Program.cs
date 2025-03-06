@@ -10,6 +10,7 @@ namespace DataStructures_Singly_LinkedList
             list.Addlast(12);
             list.Addlast(15);
             list.Addlast(18);
+            list.AddFirst(9);
             list.ShowInfo();
         }
     }
@@ -54,6 +55,19 @@ namespace DataStructures_Singly_LinkedList
                 temp.SetNext(current);
             }
         }
+        public void AddFirst(int data)
+        {
+            Node current = new Node(data);
+            if(Head == null)
+            {
+                Head = current;
+            }
+            else
+            {
+                current.SetNext(Head);
+                Head = current;
+            }
+        }
         public void ShowInfo()
         {
             Node? temp = Head;
@@ -64,6 +78,7 @@ namespace DataStructures_Singly_LinkedList
             }
             System.Console.Write("NULL");
         }    
+
     }
     
 }

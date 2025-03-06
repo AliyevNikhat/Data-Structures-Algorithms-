@@ -21,7 +21,7 @@ This repo is not limited to Linked Lists; it will also cover other data structur
 This repository is open for learning, improving, and using in your own projects!
 Usage Instructions:
 1️⃣ Clone the repository:
-`git clone https://github.com/NikhatAliyev/Data-Structures-Algorithms-.git
+`git clone https://github.com/NikhatAliyev/Data-Structures-Algorithms-.git`
 2️⃣ Explore and run the code.
 3️⃣ Improve your understanding and apply it in your own projects.
 

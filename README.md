@@ -5,27 +5,39 @@ This repo is not limited to Linked Lists; it will also cover other data structur
 
 # 📌 Available Data Structures
 ✅ Linked List
+
 🔹 Singly Linked List
 
 # 📌 Upcoming Implementations:
 🔜 Doubly Linked List
+
 🔜 Circular Linked List
+
 🔜 Stack
+
 🔜 Queue
+
 🔜 Trees (Binary Tree, Binary Search Tree)
+
 🔜 Graphs
+
 🔜 Sorting & Searching Algorithms
 ... and more!
 
-🚀 How to Use?
+# 🚀 How to Use?
+
 This repository is open for learning, improving, and using in your own projects!
 Usage Instructions:
+
 1️⃣ Clone the repository:
+
 `git clone https://github.com/NikhatAliyev/Data-Structures-Algorithms-.git`
+
 2️⃣ Explore and run the code.
+
 3️⃣ Improve your understanding and apply it in your own projects.
 
-If you find this repository helpful, don't forget to ⭐ star it! 😊
+# If you find this repository helpful, don't forget to ⭐ star it! 😊
 
 # 🔍 Why am I not using built-in classes?
 My primary goal is to gain a deep understanding of DSA.
@@ -38,8 +50,11 @@ You can also open an issue or submit a Pull Request (PR) on GitHub.
 
 # ⭐ Support the Project!
 If you find this repository useful:
+
 ✅ Fork it and add your own improvements!
+
 ✅ Star ⭐ the repo to show your support!
+
 ✅ Share your feedback and suggestions to make this project even better!
 
 That's all! 😊 I hope this repository will be useful for both me and you! 🚀

@@ -12,6 +12,12 @@ namespace LinkedList
             list.AddLast(18);
             list.AddLast(21);
             list.AddFirst(9);
+            list.AddFirst(46);
+            list.ShowInfo();
+            System.Console.WriteLine();
+            System.Console.WriteLine("----UPDATED----");
+            list.AddMiddle(1000);
+            // System.Console.WriteLine(list.GetCount_LinkedList());
             list.ShowInfo();
         }
     }
@@ -63,7 +69,7 @@ namespace LinkedList
                     System.Console.Write($"{temp.Data} --->>> ");
                     temp = temp.Next;
                 }
-                System.Console.Write(" NULL");
+                System.Console.Write("NULL");
             }
         }
         public void AddFirst(int data)
@@ -78,6 +84,37 @@ namespace LinkedList
                 current.Next = Head;
                 Head = current;
             }
+        }
+        public void AddMiddle(int data)
+        {
+            Node current = new Node(data);
+            if(Head == null)
+            {
+                Head = current;
+            }
+            else
+            {
+                int MiddleOfLinkedList = GetCount_LinkedList() / 2;
+                Node temp = Head;
+                while(MiddleOfLinkedList > 1)
+                {
+                    temp = temp.Next;
+                    MiddleOfLinkedList--;
+                }
+                current.Next = temp.Next;
+                temp.Next = current;
+            }
+        }
+        public int GetCount_LinkedList()
+        {
+            Node temp = Head;
+            int LinkedListCount = 0;
+            while(temp != null)
+            {
+                temp = temp.Next;
+                LinkedListCount++;
+            }
+            return LinkedListCount;
         }
     }
 }

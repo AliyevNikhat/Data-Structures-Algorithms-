@@ -11,6 +11,7 @@ namespace LinkedList
             list.AddLast(15);
             list.AddLast(18);
             list.AddLast(21);
+            list.AddFirst(9);
             list.ShowInfo();
         }
     }
@@ -63,6 +64,19 @@ namespace LinkedList
                     temp = temp.Next;
                 }
                 System.Console.Write(" NULL");
+            }
+        }
+        public void AddFirst(int data)
+        {
+            Node current = new Node(data);
+            if(Head == null)
+            {
+                Head = current;
+            }
+            else
+            {
+                current.Next = Head;
+                Head = current;
             }
         }
     }

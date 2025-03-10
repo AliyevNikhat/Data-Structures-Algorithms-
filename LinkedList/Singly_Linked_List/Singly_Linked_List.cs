@@ -15,9 +15,13 @@ namespace LinkedList
             list.AddFirst(46);
             list.ShowInfo();
             System.Console.WriteLine();
-            System.Console.WriteLine("----UPDATED----");
             list.AddMiddle(1000);
+            System.Console.WriteLine("----------UPDATED----------");
+            list.ShowInfo(); // Added an element in the middle of the LinkedList
+            System.Console.WriteLine();
+            list.RemoveFirstElement(); //Removed the first element in the LinkedList
             // System.Console.WriteLine(list.GetCount_LinkedList());
+            System.Console.WriteLine("----------UPDATED----------");
             list.ShowInfo();
         }
     }
@@ -59,7 +63,7 @@ namespace LinkedList
         {
             if(Head == null)
             {
-                System.Console.WriteLine("There is not Element in Singly_LinedList!");
+                System.Console.WriteLine("There is no element in the singly linked list!");
             }
             else
             {
@@ -115,6 +119,17 @@ namespace LinkedList
                 LinkedListCount++;
             }
             return LinkedListCount;
+        }
+        public void RemoveFirstElement()
+        {
+            if(Head == null)
+            {
+                System.Console.WriteLine("There is no element in the singly linked list!");
+            }
+            else
+            {
+                Head = Head.Next;
+            }
         }
     }
 }

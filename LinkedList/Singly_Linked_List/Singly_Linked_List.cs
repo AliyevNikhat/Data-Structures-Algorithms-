@@ -7,22 +7,28 @@ namespace LinkedList
         static void Main()
         {
             Singly_Linked_List list = new Singly_Linked_List();
-            list.AddLast(12);
-            list.AddLast(15);
-            list.AddLast(18);
-            list.AddLast(21);
-            list.AddFirst(9);
-            list.AddFirst(46);
-            list.ShowInfo();
-            System.Console.WriteLine();
-            list.AddMiddle(1000);
-            System.Console.WriteLine("----------UPDATED----------");
-            list.ShowInfo(); // Added an element in the middle of the LinkedList
-            System.Console.WriteLine();
-            list.RemoveFirstElement(); //Removed the first element in the LinkedList
-            // System.Console.WriteLine(list.GetCount_LinkedList());
-            System.Console.WriteLine("----------UPDATED----------");
-            list.ShowInfo();
+            // I am testing the LinkedList by adding elements and performing operations on it.
+                list.AddLast(12);
+                list.AddLast(15);
+                list.AddLast(18);
+                list.AddLast(21);
+                list.AddFirst(9);
+                list.AddFirst(46);
+                list.ShowInfo();
+                System.Console.WriteLine();
+                list.AddMiddle(1000);
+                System.Console.WriteLine("----------UPDATED----------");
+                list.ShowInfo(); // Added an element in the middle of the LinkedList
+                System.Console.WriteLine();
+                list.RemoveFirstElement(); //Removed the first element in the LinkedList
+                // System.Console.WriteLine(list.GetCount_LinkedList());
+                System.Console.WriteLine("----------UPDATED----------");
+                list.ShowInfo();
+                list.RemoveLastElemnt();
+                System.Console.WriteLine();
+                System.Console.WriteLine("----------UPDATED----------");
+                list.ShowInfo();
+            //If it has one element in the LinkedList, it will work properly..!!
         }
     }
     class Node
@@ -129,6 +135,22 @@ namespace LinkedList
             else
             {
                 Head = Head.Next;
+            }
+        }
+        public void RemoveLastElemnt()
+        {
+            if(Head == null || Head.Next == null)
+            {
+                Head = null;
+            }
+            else
+            {
+                Node temp = Head;
+                while(temp.Next.Next != null)
+                {
+                    temp = temp.Next;
+                }
+                temp.Next = null;
             }
         }
     }

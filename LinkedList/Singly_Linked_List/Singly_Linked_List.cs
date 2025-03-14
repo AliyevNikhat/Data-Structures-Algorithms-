@@ -8,42 +8,39 @@ namespace LinkedList
         {
             Singly_Linked_List list = new Singly_Linked_List();
             // I am testing the LinkedList by adding elements and performing operations on it.
-                list.AddLast(12);
-                list.AddLast(15);
-                list.AddLast(18);
-                list.AddLast(21);
-                list.AddFirst(9);
-                list.AddFirst(46);
-                list.ShowInfo();
-                System.Console.WriteLine();
-                list.AddMiddle(1000);
-                System.Console.WriteLine("----------UPDATED----------");
-                list.ShowInfo(); // Added an element in the middle of the LinkedList
-                System.Console.WriteLine();
-                list.RemoveFirstElement(); //Removed the first element in the LinkedList
-                // System.Console.WriteLine(list.GetCount_LinkedList());
-                System.Console.WriteLine("----------UPDATED----------");
-                list.ShowInfo();
+                list.AddFirst(13);
+                list.AddFirst(15);
+                list.AddFirst(11);
+                list.AddFirst(10);
+                list.AddMiddle(122);
                 list.RemoveLastElemnt();
-                System.Console.WriteLine();
-                System.Console.WriteLine("----------UPDATED----------");
+                System.Console.WriteLine(list.GetCount_LinkedList());
                 list.ShowInfo();
-            //If it has one element in the LinkedList, it will work properly..!!
+               
+            // If there is only one element in the LinkedList, the RemoveFirstElement and RemoveLastElement methods will work properly.
         }
     }
     class Node
     {
-        public int Data { get; }
-        public Node? Next {get; set;}
+        public int Data { get; init;}
+        private Node? Next {get; set;}
         public Node(int data)
         {
             this.Data = data;
             this.Next = null;
         }
+        public void SetNextElement(Node NextElement)
+        {
+            this.Next = NextElement;
+        }
+        public Node? GetNextElement()
+        {
+            return this.Next;
+        }
     }
     class Singly_Linked_List
     {
-        Node? Head;
+        private Node? Head;
         public Singly_Linked_List()
         {
             this.Head = null;
@@ -58,11 +55,11 @@ namespace LinkedList
             else
             {
                 Node temp = Head;
-                while(temp.Next != null)
+                while(temp.GetNextElement() != null)
                 {
-                    temp = temp.Next;
+                    temp = temp.GetNextElement();
                 }
-                temp.Next = current;
+                temp.SetNextElement(current);
             }
         }
         public void ShowInfo()
@@ -77,7 +74,7 @@ namespace LinkedList
                 while(temp != null)
                 {
                     System.Console.Write($"{temp.Data} --->>> ");
-                    temp = temp.Next;
+                    temp = temp.GetNextElement();
                 }
                 System.Console.Write("NULL");
             }
@@ -91,7 +88,7 @@ namespace LinkedList
             }
             else
             {
-                current.Next = Head;
+                current.SetNextElement(Head);
                 Head = current;
             }
         }
@@ -104,15 +101,16 @@ namespace LinkedList
             }
             else
             {
-                int MiddleOfLinkedList = GetCount_LinkedList() / 2;
+                double MiddleOfLinkedList = GetCount_LinkedList() / 2.0;
+                Math.Ceiling(MiddleOfLinkedList);
                 Node temp = Head;
                 while(MiddleOfLinkedList > 1)
                 {
-                    temp = temp.Next;
                     MiddleOfLinkedList--;
+                    temp = temp.GetNextElement();
                 }
-                current.Next = temp.Next;
-                temp.Next = current;
+                current.SetNextElement(temp.GetNextElement());
+                temp.SetNextElement(current);
             }
         }
         public int GetCount_LinkedList()
@@ -121,7 +119,7 @@ namespace LinkedList
             int LinkedListCount = 0;
             while(temp != null)
             {
-                temp = temp.Next;
+                temp = temp.GetNextElement();
                 LinkedListCount++;
             }
             return LinkedListCount;
@@ -134,23 +132,23 @@ namespace LinkedList
             }
             else
             {
-                Head = Head.Next;
+                Head = Head.GetNextElement();                 
             }
         }
         public void RemoveLastElemnt()
         {
-            if(Head == null || Head.Next == null)
+            if(Head == null || Head.GetNextElement() == null)
             {
                 Head = null;
             }
             else
             {
                 Node temp = Head;
-                while(temp.Next.Next != null)
+                while(temp.GetNextElement()?.GetNextElement() != null)
                 {
-                    temp = temp.Next;
+                    temp = temp.GetNextElement();
                 }
-                temp.Next = null;
+                temp.SetNextElement(null); 
             }
         }
     }

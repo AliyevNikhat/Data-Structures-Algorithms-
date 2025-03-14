@@ -7,17 +7,50 @@ namespace LinkedList
         static void Main()
         {
             Singly_Linked_List list = new Singly_Linked_List();
-            // I am testing the LinkedList by adding elements and performing operations on it.
-                list.AddFirst(13);
-                list.AddFirst(15);
-                list.AddFirst(11);
-                list.AddFirst(10);
-                list.AddMiddle(122);
-                list.RemoveLastElemnt();
-                System.Console.WriteLine(list.GetCount_LinkedList());
+            int EnterNumber = ConsoleApp();
+            int NumberForLinkedList;
+            while(EnterNumber != 0)
+            {
+                switch (EnterNumber)
+                {
+                    case 1: Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
+                        list.AddLast(NumberForLinkedList);
+                        break;
+                    case 2: System.Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
+                        list.AddFirst(NumberForLinkedList);
+                        break;
+                    case 3: Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
+                        list.AddMiddle(NumberForLinkedList);
+                        break;
+                    case 4:
+                        list.RemoveFirstElement();
+                        break;
+                    case 5:
+                        list.RemoveLastElement();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.Console.WriteLine("You Entered the Wrong Case");
+                        break;
+                }
+                Console.Clear();
                 list.ShowInfo();
-               
-            // If there is only one element in the LinkedList, the RemoveFirstElement and RemoveLastElement methods will work properly.
+                EnterNumber = ConsoleApp();
+
+            }               
+        }
+        static int ConsoleApp()
+        {
+            int EnterNumber;
+            System.Console.WriteLine("\n1 - To Add the Last Element in a LinkedList !");
+            System.Console.WriteLine("2 - To Add the First Element in a Linkedlist !");
+            System.Console.WriteLine("3 - To Add the Middle Element in a Linkedlist !");
+            System.Console.WriteLine("4 - To Remove the First Element in a Linkedlist !");
+            System.Console.WriteLine("5 - To Remove the Last Element in a Linkedlist !");
+            System.Console.WriteLine("0 -  To Exit.");
+            System.Console.Write("Enter Number (1 - 5) : "); EnterNumber = int.Parse(Console.ReadLine());
+            return EnterNumber;
         }
     }
     class Node
@@ -55,11 +88,11 @@ namespace LinkedList
             else
             {
                 Node temp = Head;
-                while(temp.GetNextElement() != null)
+                while(temp?.GetNextElement() != null)
                 {
                     temp = temp.GetNextElement();
                 }
-                temp.SetNextElement(current);
+                temp?.SetNextElement(current);
             }
         }
         public void ShowInfo()
@@ -128,14 +161,14 @@ namespace LinkedList
         {
             if(Head == null)
             {
-                System.Console.WriteLine("There is no element in the singly linked list!");
+                Head = null;
             }
             else
             {
                 Head = Head.GetNextElement();                 
             }
         }
-        public void RemoveLastElemnt()
+        public void RemoveLastElement()
         {
             if(Head == null || Head.GetNextElement() == null)
             {
@@ -144,7 +177,7 @@ namespace LinkedList
             else
             {
                 Node temp = Head;
-                while(temp.GetNextElement()?.GetNextElement() != null)
+                while(temp?.GetNextElement()?.GetNextElement() != null)
                 {
                     temp = temp.GetNextElement();
                 }

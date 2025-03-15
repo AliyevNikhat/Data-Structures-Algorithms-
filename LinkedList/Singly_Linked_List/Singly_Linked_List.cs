@@ -7,50 +7,51 @@ namespace LinkedList
         static void Main()
         {
             Singly_Linked_List list = new Singly_Linked_List();
-            int EnterNumber = ConsoleApp();
-            int NumberForLinkedList;
-            while(EnterNumber != 0)
+            Dictionary<string, Action<int>> menu = new Dictionary<string, Action<int>>()
             {
-                switch (EnterNumber)
+                {"1", list.AddLast},
+                {"2", list.AddFirst},
+                {"3", list.AddMiddle},
+            };
+
+            Dictionary<string, Action> noParamMenu = new Dictionary<string, Action>()
+            {
+                {"4", list.RemoveFirstElement},
+                {"5", list.RemoveLastElement},
+                {"0", () => 
                 {
-                    case 1: Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
-                        list.AddLast(NumberForLinkedList);
-                        break;
-                    case 2: System.Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
-                        list.AddFirst(NumberForLinkedList);
-                        break;
-                    case 3: Console.Write("Number : "); NumberForLinkedList = int.Parse(Console.ReadLine());
-                        list.AddMiddle(NumberForLinkedList);
-                        break;
-                    case 4:
-                        list.RemoveFirstElement();
-                        break;
-                    case 5:
-                        list.RemoveLastElement();
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        System.Console.WriteLine("You Entered the Wrong Case");
-                        break;
+                    System.Console.WriteLine("Exiting the application...");
+                    Environment.Exit(0);
+                }}
+            };
+
+            while(true)
+            {
+                ConsoleApp();
+                string choice = Console.ReadLine();
+                    if(choice == "0") { noParamMenu[choice].Invoke(); break;}
+                if(menu.ContainsKey(choice))
+                {
+                    System.Console.Write("Number : "); int ChoiceNumberForLinkedList = int.Parse(Console.ReadLine());
+                    menu[choice].Invoke(ChoiceNumberForLinkedList);
+                }
+                else if(noParamMenu.ContainsKey(choice))
+                {
+                    noParamMenu[choice].Invoke();
                 }
                 Console.Clear();
                 list.ShowInfo();
-                EnterNumber = ConsoleApp();
-
-            }               
+            }
         }
-        static int ConsoleApp()
+        static void ConsoleApp()
         {
-            int EnterNumber;
             System.Console.WriteLine("\n1 - To Add the Last Element in a LinkedList !");
             System.Console.WriteLine("2 - To Add the First Element in a Linkedlist !");
             System.Console.WriteLine("3 - To Add the Middle Element in a Linkedlist !");
             System.Console.WriteLine("4 - To Remove the First Element in a Linkedlist !");
             System.Console.WriteLine("5 - To Remove the Last Element in a Linkedlist !");
             System.Console.WriteLine("0 -  To Exit.");
-            System.Console.Write("Enter Number (1 - 5) : "); EnterNumber = int.Parse(Console.ReadLine());
-            return EnterNumber;
+            System.Console.Write("Enter Number (1 - 5) : ");
         }
     }
     class Node

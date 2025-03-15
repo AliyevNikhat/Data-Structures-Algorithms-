@@ -13,7 +13,10 @@ namespace LinkedList
                 {"2", list.AddFirst},
                 {"3", list.AddMiddle},
             };
-
+            Dictionary<string, Action<Singly_Linked_List>> ReverseLinkedList = new Dictionary<string, Action<Singly_Linked_List>>()
+            {
+                {"6", list.ReverseLinkedList}
+            };
             Dictionary<string, Action> noParamMenu = new Dictionary<string, Action>()
             {
                 {"4", list.RemoveFirstElement},
@@ -39,17 +42,22 @@ namespace LinkedList
                 {
                     noParamMenu[choice].Invoke();
                 }
+                else if(ReverseLinkedList.ContainsKey(choice))
+                {
+                    ReverseLinkedList[choice].Invoke(list);
+                }
                 Console.Clear();
                 list.ShowInfo();
             }
         }
         static void ConsoleApp()
         {
-            System.Console.WriteLine("\n1 - To Add the Last Element in a LinkedList !");
+            System.Console.WriteLine("\n1 - To Add the Last Element in a Linkedlist !");
             System.Console.WriteLine("2 - To Add the First Element in a Linkedlist !");
             System.Console.WriteLine("3 - To Add the Middle Element in a Linkedlist !");
             System.Console.WriteLine("4 - To Remove the First Element in a Linkedlist !");
             System.Console.WriteLine("5 - To Remove the Last Element in a Linkedlist !");
+            System.Console.WriteLine("6 - To Reverse in Linkedlist !");
             System.Console.WriteLine("0 -  To Exit.");
             System.Console.Write("Enter Number (1 - 5) : ");
         }
@@ -57,7 +65,7 @@ namespace LinkedList
     class Node
     {
         public int Data { get; init;}
-        private Node? Next {get; set;}
+        public Node? Next {get; set;}
         public Node(int data)
         {
             this.Data = data;
@@ -74,7 +82,7 @@ namespace LinkedList
     }
     class Singly_Linked_List
     {
-        private Node? Head;
+        public Node? Head;
         public Singly_Linked_List()
         {
             this.Head = null;
@@ -184,6 +192,19 @@ namespace LinkedList
                 }
                 temp.SetNextElement(null); 
             }
+        }
+        public void ReverseLinkedList(Singly_Linked_List list)
+        {
+            Node? prev = null;
+            Node? current = Head;
+            while (current != null)
+            {
+                Node? nextNode = current.Next; // Next-ə bu şəkildə erişmək lazımdır
+                current.Next = prev;
+                prev = current;
+                current = nextNode;
+            }
+            Head = prev;
         }
     }
 }

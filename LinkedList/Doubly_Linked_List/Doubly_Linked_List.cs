@@ -7,12 +7,8 @@ namespace LinkedList
         static void Main()
         {
             Doubly_Linked_List list = new Doubly_Linked_List();
-            list.AddFirst(12);
-            list.AddFirst(10);
-            list.AddFirst(8);
-            list.AddMiddle(100);
+            list.RemoveFirstElement();
             list.ShowInfo();
-
         }
     }
     class Node
@@ -100,6 +96,21 @@ namespace LinkedList
                 temp = temp.Next;
             }
             return DoublyLinkedList;
+        }
+        public void RemoveFirstElement()
+        {
+            if(Head == null)
+            {
+                System.Console.WriteLine("There is no element in Doubly LinkedList !");
+            }
+            else if(Head.Next == null)
+            {
+                Head = Tail = null;
+            }
+            else
+            {
+                Head = Head.Next;
+            }
         }
         public void ShowInfo()
         {

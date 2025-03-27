@@ -10,6 +10,7 @@ namespace LinkedList
             list.AddFirst(10);            
             list.AddFirst(9);            
             list.AddFirst(8);
+            list.AddLast(20);
             list.ShowInfo();
 
         }
@@ -51,7 +52,20 @@ namespace LinkedList
                 Head = current;
             }
         }
-
+        public void AddLast(int data)
+        {
+            Node current = new Node(data);
+            if(Head == null)
+            {
+                Head = Tail = current;
+            }
+            else
+            {
+                current.Prev = Tail;
+                Tail.Next = current;
+                Tail = current;
+            }
+        }
         public void ShowInfo()
         {
             Node temp = Head;

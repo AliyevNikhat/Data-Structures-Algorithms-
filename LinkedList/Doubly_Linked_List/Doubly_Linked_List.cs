@@ -7,10 +7,10 @@ namespace LinkedList
         static void Main()
         {
             Doubly_Linked_List list = new Doubly_Linked_List();
-            list.AddFirst(10);            
-            list.AddFirst(9);            
+            list.AddFirst(12);
+            list.AddFirst(10);
             list.AddFirst(8);
-            list.AddLast(20);
+            list.AddMiddle(100);
             list.ShowInfo();
 
         }
@@ -65,6 +65,41 @@ namespace LinkedList
                 Tail.Next = current;
                 Tail = current;
             }
+        }
+        public void AddMiddle(int data)
+        {
+            Node current = new Node(data);
+            if(Head == null)
+            {
+                Head = Tail = current;
+            }
+            else
+            {
+                double LinkedListCount = GetDoublyLinkedListCount() / 2.0; 
+                LinkedListCount = Math.Ceiling(LinkedListCount);
+                Node temp = Head;
+                while(LinkedListCount > 1)
+                {
+                    temp = temp.Next;
+                    LinkedListCount--;
+                }
+                current.Next = temp.Next;
+                temp.Next = current;
+                temp.Next.Prev = current;
+                current.Prev = temp;
+                temp = current;
+            }
+        }
+        public int GetDoublyLinkedListCount()
+        {
+            Node temp = Head;
+            int DoublyLinkedList = 0;
+            while(temp != null)
+            {
+                DoublyLinkedList++;
+                temp = temp.Next;
+            }
+            return DoublyLinkedList;
         }
         public void ShowInfo()
         {
